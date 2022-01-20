@@ -1,0 +1,41 @@
+TITLE: Round 2 Calibration Model
+DATA: FILE = "C:/Users/kdono/OneDrive/Documents/mnlfa_mplus_dir/calibration.dat";
+VARIABLE: 
+NAMES = ID MOTOR SENS QREPB Q19 Q16 GNUM AGE; 
+MISSING=.;
+!
+!
+!
+!
+USEVARIABLES= MOTOR AGE SENS QREPB Q19 Q16;
+!
+CATEGORICAL= MOTOR SENS QREPB Q19 Q16 ;
+!
+CONSTRAINT= AGE ;
+ANALYSIS: ESTIMATOR=ML;ALGORITHM=INTEGRATION;INTEGRATION=MONTECARLO;PROCESSORS=4;
+MODEL: [ETA@0];ETA*(veta);
+ETA BY MOTOR*(l_1);
+ETA BY SENS*(l_2);
+ETA BY QREPB*(l_3);
+ETA BY Q19*(l_4);
+ETA BY Q16*(l_5);
+!
+MOTOR on AGE;
+SENS on AGE;
+!
+!
+!
+MODEL CONSTRAINT: new( !
+!
+l200*1   l21*0
+!
+!
+!
+);
+!;
+l_2=l200 +l21*AGE;
+!;
+!;
+!;
+veta=1*exp( 0);
+OUTPUT: tech1;

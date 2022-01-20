@@ -1,0 +1,58 @@
+Heterogenous linear mixed model 
+     fitted by maximum likelihood method 
+ 
+hlme(fixed = ETA_Z ~ AGE_CENT + GNUM + AGE_CENT * GNUM, mixture = ~AGE_CENT + 
+    GNUM, random = ~1 + AGE_CENT, subject = "ID", classmb = ~GNUM, 
+    ng = 2, nwg = T, data = factor_data, returndata = TRUE)
+ 
+Statistical Model: 
+     Dataset: factor_data 
+     Number of subjects: 377 
+     Number of observations: 1254 
+     Number of observations deleted: 1 
+     Number of latent classes: 2 
+     Number of parameters: 14  
+ 
+Iteration process: 
+     Convergence criteria satisfied 
+     Number of iterations:  4 
+     Convergence criteria: parameters= 7.7e-06 
+                         : likelihood= 4.4e-05 
+                         : second derivatives= 2.3e-10 
+ 
+Goodness-of-fit statistics: 
+     maximum log-likelihood: -1599.44  
+     AIC: 3226.89  
+     BIC: 3281.94  
+ 
+ 
+Maximum Likelihood Estimates: 
+ 
+Fixed effects in the class-membership model:
+(the class of reference is the last class) 
+
+                     coef      Se   Wald p-value
+intercept class1  0.57612 0.18891  3.050 0.00229
+GNUM class1       0.79506 0.33920  2.344 0.01908
+
+Fixed effects in the longitudinal model:
+
+                     coef      Se   Wald p-value
+intercept class1 -0.32831 0.06285 -5.224 0.00000
+intercept class2  0.56028 0.08997  6.227 0.00000
+AGE_CENT class1  -0.01137 0.00323 -3.524 0.00042
+AGE_CENT class2   0.02202 0.00888  2.480 0.01312
+GNUM class1       0.27123 0.08106  3.346 0.00082
+GNUM class2      -0.17519 0.13385 -1.309 0.19058
+AGE_CENT:GNUM     0.00001 0.00453  0.003 0.99769
+
+
+Variance-covariance matrix of the random-effects:
+          intercept AGE_CENT
+intercept   0.25097         
+AGE_CENT   -0.02966  0.00445
+
+                                    coef      Se
+Proportional coefficient class1  0.00000 0.03451
+Residual standard error:         0.70958 0.01783
+

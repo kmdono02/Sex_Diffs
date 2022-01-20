@@ -1,0 +1,16 @@
+Sensitivity[1] 0.4418605
+Specificity[1] 0.8865979
+PPV[1] 0.5352113
+NPV[1] 0.8431373
+
+##BOYS ONLY##
+Sensitivity[1] 0.3787879
+Specificity[1] 0.9078947
+PPV[1] 0.6410256
+NPV[1] 0.7709497
+
+##GIRLS ONLY##
+Sensitivity[1] 0.65
+Specificity[1] 0.8633094
+PPV[1] 0.40625
+NPV[1] 0.9448819

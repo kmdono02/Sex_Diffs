@@ -1,0 +1,576 @@
+Mplus VERSION 8.6
+MUTHEN & MUTHEN
+08/21/2021  11:04 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Scoring Model
+  DATA: FILE = "C:/Users/joshu/Desktop/GRA/Burrows/Sex_Differences/aMNLFA_Update/full.dat";
+  VARIABLE:
+  NAMES = ID VNUM MOTOR SENS QREPB Q19 Q16 GNUM AGE;
+  MISSING=.;
+  !
+  !
+  !
+  !
+  USEVARIABLES= MOTOR SENS QREPB Q19 Q16 AGE GNUM;
+  cluster=ID;
+  CATEGORICAL= MOTOR SENS QREPB Q19 Q16 ;
+  !
+  CONSTRAINT= GNUM ;
+  ANALYSIS: ESTIMATOR=ML; ALGORITHM=INTEGRATION; INTEGRATION=MONTECARLO; PROCESSORS=4;
+   type=complex;
+  MODEL: [ETA@0];ETA*(veta);
+  ETA BY MOTOR @1.081;
+  ETA BY SENS @2.625;
+  ETA BY QREPB*(l_3);
+  ETA BY Q19 @1.451;
+  ETA BY Q16 @0.681;
+  ETA ON AGE@0.016;
+  ETA ON GNUM@-0.175;
+  QREPB ON GNUM@-2.148;
+  Q16 ON AGE@-0.509;
+  [MOTOR$1@2.563];
+  [MOTOR$2@3.148];
+  [SENS$1@4.258];
+  [SENS$2@5.696];
+  [QREPB$1@0.611];
+  [QREPB$2@3.364];
+  [Q19$1@3.179];
+  [Q16$1@-2.448];
+  [Q16$2@-0.035];
+  MODEL CONSTRAINT:
+    veta=1*exp(
+    0);
+    ! !;
+    ! !;
+    l_3=0.369 +1.987*GNUM;
+    ! !;
+    ! !;
+
+
+
+  OUTPUT: tech1;
+  SAVEDATA: SAVE=FSCORES; FILE=scores.dat;
+
+
+
+*** WARNING in ANALYSIS command
+  Estimator ML is only allowed with TYPE=COMPLEX and replicate weights.
+  Default estimator will be used.
+*** WARNING
+  Data set contains cases with missing on x-variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on x-variables:  1
+   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+Scoring Model
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1253
+
+Number of dependent variables                                    5
+Number of independent variables                                  2
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   MOTOR       SENS        QREPB       Q19         Q16
+
+Observed independent variables
+   AGE         GNUM
+
+Continuous latent variables
+   ETA
+
+Variables with special functions
+
+  Cluster variable      ID
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-02
+    Relative loglikelihood change                        0.100D-05
+    Derivative                                           0.100D-02
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Integration Specifications
+  Type                                                  MONTECARLO
+  Number of integration points                                1000
+  Dimensions of numerical integration                            1
+  Adaptive quadrature                                           ON
+  Monte Carlo integration seed                                   0
+Link                                                         LOGIT
+Cholesky                                                        ON
+
+Input data file(s)
+  C:/Users/joshu/Desktop/GRA/Burrows/Sex_Differences/aMNLFA_Update/full.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             5
+     Number of y missing data patterns           0
+     Number of u missing data patterns           5
+     Number of clusters                        377
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR U
+
+
+           Covariance Coverage
+              MOTOR         SENS          QREPB         Q19           Q16
+              ________      ________      ________      ________      ________
+ MOTOR          1.000
+ SENS           0.998         0.998
+ QREPB          0.445         0.445         0.445
+ Q19            0.549         0.547         0.000         0.549
+ Q16            0.554         0.552         0.000         0.549         0.554
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    MOTOR
+      Category 1    0.858         1075.000
+      Category 2    0.053           66.000
+      Category 3    0.089          112.000
+    SENS
+      Category 1    0.852         1066.000
+      Category 2    0.070           88.000
+      Category 3    0.078           97.000
+    QREPB
+      Category 1    0.642          358.000
+      Category 2    0.285          159.000
+      Category 3    0.073           41.000
+    Q19
+      Category 1    0.900          619.000
+      Category 2    0.097           67.000
+      Category 3    0.003            2.000
+    Q16
+      Category 1    0.850          590.000
+      Category 2    0.122           85.000
+      Category 3    0.027           19.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     AGE                  18.737       0.715       5.500    0.08%       7.100     12.500     13.400
+            1253.000     122.928      -0.389      57.800    0.08%      24.000     25.300
+     GNUM                  0.421       0.322       0.000   57.94%       0.000      0.000      0.000
+            1253.000       0.244      -1.896       1.000   42.06%       1.000      1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+  ERROR OCCURRED IN THE BRANT WALD TEST FOR PROPORTIONAL ODDS FOR Q19.
+
+  ERROR OCCURRED IN THE BRANT WALD TEST FOR PROPORTIONAL ODDS FOR Q16.
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                        1
+
+Loglikelihood
+
+          H0 Value                       -2219.212
+          H0 Scaling Correction Factor      0.9651
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                    4440.424
+          Bayesian (BIC)                  4445.558
+          Sample-Size Adjusted BIC        4442.381
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ ETA      BY
+    MOTOR              1.081      0.000    999.000    999.000
+    SENS               2.625      0.000    999.000    999.000
+    QREPB            999.000      0.000    999.000    999.000
+    Q19                1.451      0.000    999.000    999.000
+    Q16                0.681      0.000    999.000    999.000
+
+ ETA        ON
+    AGE                0.016      0.000    999.000    999.000
+    GNUM              -0.175      0.000    999.000    999.000
+
+ QREPB      ON
+    GNUM              -2.148      0.000    999.000    999.000
+
+ Q16        ON
+    AGE               -0.509      0.000    999.000    999.000
+
+ Intercepts
+    ETA                0.000      0.000    999.000    999.000
+
+ Thresholds
+    MOTOR$1            2.563      0.000    999.000    999.000
+    MOTOR$2            3.148      0.000    999.000    999.000
+    SENS$1             4.258      0.000    999.000    999.000
+    SENS$2             5.696      0.000    999.000    999.000
+    QREPB$1            0.611      0.000    999.000    999.000
+    QREPB$2            3.364      0.000    999.000    999.000
+    Q19$1              3.179      0.000    999.000    999.000
+    Q19$2              7.107      0.697     10.193      0.000
+    Q16$1             -2.448      0.000    999.000    999.000
+    Q16$2             -0.035      0.000    999.000    999.000
+
+ Residual Variances
+    ETA                1.000      0.000    999.000    999.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.399E-01
+       (ratio of smallest to largest eigenvalue)
+
+
+RESULTS IN PROBABILITY SCALE
+
+                    Estimate
+
+ MOTOR
+    Category 1         0.872
+    Category 2         0.048
+    Category 3         0.080
+ SENS
+    Category 1         0.873
+    Category 2         0.070
+    Category 3         0.057
+ QREPB
+    Category 1         0.751
+    Category 2         0.224
+    Category 3         0.025
+ Q19
+    Category 1         0.894
+    Category 2         0.103
+    Category 3         0.003
+ Q16
+    Category 1         0.916
+    Category 2         0.073
+    Category 3         0.012
+
+
+LOGISTIC REGRESSION ODDS RATIO RESULTS
+
+                                                95% C.I.
+                    Estimate       S.E.  Lower 2.5% Upper 2.5%
+
+ QREPB      ON
+    GNUM               0.117      0.000      0.117      0.117
+
+ Q16        ON
+    AGE                0.601      0.000      0.601      0.601
+
+
+BRANT WALD TEST FOR PROPORTIONAL ODDS
+
+                                   Degrees of
+                      Chi-Square     Freedom   P-Value
+
+  MOTOR
+    Overall test          25.717         2      0.000
+    AGE                   24.421         1      0.000
+    GNUM                   1.007         1      0.316
+
+  SENS
+    Overall test          37.397         2      0.000
+    AGE                   37.344         1      0.000
+    GNUM                   0.117         1      0.732
+
+  QREPB
+    Overall test         355.000         2      0.000
+    AGE                  341.167         1      0.000
+    GNUM                   0.342         1      0.559
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           TAU
+              MOTOR$1       MOTOR$2       SENS$1        SENS$2        QREPB$1
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           TAU
+              QREPB$2       Q19$1         Q19$2         Q16$1         Q16$2
+              ________      ________      ________      ________      ________
+                    0             0             3             0             0
+
+
+           NU
+              MOTOR         SENS          QREPB         Q19           Q16
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           NU
+              AGE           GNUM
+              ________      ________
+                    0             0
+
+
+           LAMBDA
+              ETA           QREPB         Q16           AGE           GNUM
+              ________      ________      ________      ________      ________
+ MOTOR              0             0             0             0             0
+ SENS               0             0             0             0             0
+ QREPB              0             0             0             0             0
+ Q19                0             0             0             0             0
+ Q16                0             0             0             0             0
+ AGE                0             0             0             0             0
+ GNUM               0             0             0             0             0
+
+
+           THETA
+              MOTOR         SENS          QREPB         Q19           Q16
+              ________      ________      ________      ________      ________
+ MOTOR              0
+ SENS               0             0
+ QREPB              0             0             0
+ Q19                0             0             0             0
+ Q16                0             0             0             0             0
+ AGE                0             0             0             0             0
+ GNUM               0             0             0             0             0
+
+
+           THETA
+              AGE           GNUM
+              ________      ________
+ AGE                0
+ GNUM               0             0
+
+
+           ALPHA
+              ETA           QREPB         Q16           AGE           GNUM
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           BETA
+              ETA           QREPB         Q16           AGE           GNUM
+              ________      ________      ________      ________      ________
+ ETA                0             0             0             0             0
+ QREPB              1             0             0             0             0
+ Q16                0             0             0             0             0
+ AGE                0             0             0             0             0
+ GNUM               0             0             0             0             0
+
+
+           PSI
+              ETA           QREPB         Q16           AGE           GNUM
+              ________      ________      ________      ________      ________
+ ETA                2
+ QREPB              0             0
+ Q16                0             0             0
+ AGE                0             0             0             0
+ GNUM               0             0             0             0             0
+
+
+     STARTING VALUES
+
+
+           TAU
+              MOTOR$1       MOTOR$2       SENS$1        SENS$2        QREPB$1
+              ________      ________      ________      ________      ________
+                2.563         3.148         4.258         5.696         0.611
+
+
+           TAU
+              QREPB$2       Q19$1         Q19$2         Q16$1         Q16$2
+              ________      ________      ________      ________      ________
+                3.364         3.179         5.838        -2.448        -0.035
+
+
+           NU
+              MOTOR         SENS          QREPB         Q19           Q16
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              AGE           GNUM
+              ________      ________
+                0.000         0.000
+
+
+           LAMBDA
+              ETA           QREPB         Q16           AGE           GNUM
+              ________      ________      ________      ________      ________
+ MOTOR          1.081         0.000         0.000         0.000         0.000
+ SENS           2.625         0.000         0.000         0.000         0.000
+ QREPB          0.000         1.000         0.000         0.000         0.000
+ Q19            1.451         0.000         0.000         0.000         0.000
+ Q16            0.000         0.000         1.000         0.000         0.000
+ AGE            0.000         0.000         0.000         1.000         0.000
+ GNUM           0.000         0.000         0.000         0.000         1.000
+
+
+           THETA
+              MOTOR         SENS          QREPB         Q19           Q16
+              ________      ________      ________      ________      ________
+ MOTOR          1.000
+ SENS           0.000         1.000
+ QREPB          0.000         0.000         0.000
+ Q19            0.000         0.000         0.000         1.000
+ Q16            0.000         0.000         0.000         0.000         0.000
+ AGE            0.000         0.000         0.000         0.000         0.000
+ GNUM           0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AGE           GNUM
+              ________      ________
+ AGE            0.000
+ GNUM           0.000         0.000
+
+
+           ALPHA
+              ETA           QREPB         Q16           AGE           GNUM
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              ETA           QREPB         Q16           AGE           GNUM
+              ________      ________      ________      ________      ________
+ ETA            0.000         0.000         0.000         0.016        -0.175
+ QREPB          1.000         0.000         0.000         0.000        -2.148
+ Q16            0.681         0.000         0.000        -0.509         0.000
+ AGE            0.000         0.000         0.000         0.000         0.000
+ GNUM           0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              ETA           QREPB         Q16           AGE           GNUM
+              ________      ________      ________      ________      ________
+ ETA            0.050
+ QREPB          0.000         1.000
+ Q16            0.000         0.000         1.000
+ AGE            0.000         0.000         0.000        61.464
+ GNUM           0.000         0.000         0.000         0.000         0.122
+
+
+SAMPLE STATISTICS FOR ESTIMATED FACTOR SCORES
+
+
+     SAMPLE STATISTICS
+
+
+           Means
+              ETA           ETA_SE
+              ________      ________
+                0.280         0.773
+
+
+           Covariances
+              ETA           ETA_SE
+              ________      ________
+ ETA            0.474
+ ETA_SE        -0.067         0.012
+
+
+           Correlations
+              ETA           ETA_SE
+              ________      ________
+ ETA            1.000
+ ETA_SE        -0.890         1.000
+
+
+SAVEDATA INFORMATION
+
+
+  Save file
+    scores.dat
+
+  Order and format of variables
+
+    MOTOR          F10.3
+    SENS           F10.3
+    QREPB          F10.3
+    Q19            F10.3
+    Q16            F10.3
+    AGE            F10.3
+    GNUM           F10.3
+    ETA            F10.3
+    ETA_SE         F10.3
+    ID             I4
+
+  Save file format
+    9F10.3 I4
+
+  Save file record length    10000
+
+  Save missing symbol        *
+
+
+     Beginning Time:  23:04:05
+        Ending Time:  23:05:14
+       Elapsed Time:  00:01:09
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen

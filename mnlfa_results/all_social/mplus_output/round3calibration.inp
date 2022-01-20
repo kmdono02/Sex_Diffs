@@ -1,0 +1,52 @@
+TITLE: Round 3 Final Calibration Model
+DATA: FILE = "C:/Users/kdono/OneDrive/Documents/mnlfa_mplus_dir/calibration.dat";
+VARIABLE: 
+NAMES = ID EYEC RNAME SOCINT SOCREF QSHOW QQSO Q5 Q9 GNUM AGE; 
+MISSING=.;
+!
+!
+!
+!
+USEVARIABLES= AGE EYEC RNAME SOCINT SOCREF QSHOW QQSO Q5 Q9;
+!
+CATEGORICAL= EYEC RNAME SOCINT SOCREF QSHOW QQSO Q5 Q9 ;
+!
+!
+ANALYSIS: ESTIMATOR=ML;ALGORITHM=INTEGRATION;INTEGRATION=MONTECARLO;PROCESSORS=4;
+MODEL: [ETA@0];ETA*(veta);
+ETA BY EYEC*(l_1);
+ETA BY RNAME*(l_2);
+ETA BY SOCINT*(l_3);
+ETA BY SOCREF*(l_4);
+ETA BY QSHOW*(l_5);
+ETA BY QQSO*(l_6);
+ETA BY Q5*(l_7);
+ETA BY Q9*(l_8);
+!
+!
+!
+!
+!
+!
+!
+!
+!
+MODEL CONSTRAINT: new( 
+!
+!
+!
+!
+!
+!
+!
+);
+!;
+!;
+!;
+!;
+!;
+!;
+!;
+!;
+veta=1*exp( 0);
+OUTPUT: tech1;

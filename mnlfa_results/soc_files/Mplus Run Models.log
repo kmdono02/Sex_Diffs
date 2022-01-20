@@ -1,0 +1,20 @@
+------Begin Mplus Model Run: 21Aug2021 21:53:33------
+Run options:
+	Recursive (run models in subdirectories): FALSE
+	Show output on console: FALSE
+	Replace existing outfile: never
+------
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\meanimpactscript.inp
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\measinvarscript_EYEC.inp
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\measinvarscript_Q5.inp
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\measinvarscript_Q9.inp
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\measinvarscript_QQSO.inp
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\measinvarscript_QSHOW.inp
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\measinvarscript_RNAME.inp
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\measinvarscript_SOCINT.inp
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\measinvarscript_SOCREF.inp
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\round2calibration.inp
+Currently running model: round3calibration.inp
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\varimpactscript.inp
+
+------End Mplus Model Run: 21Aug2021 21:53:35------
