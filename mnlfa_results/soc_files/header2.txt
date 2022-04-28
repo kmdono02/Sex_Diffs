@@ -1,5 +1,0 @@
-TITLE: Your title goes here
-DATA: FILE = "C:/Users/joshu/Desktop/GRA/Burrows/Sex_Differences/aMNLFA_Update/full.dat";
-VARIABLE: 
-NAMES = ID VNUM EYEC RNAME SOCINT SOCREF QSHOW QQSO Q5 Q9 GNUM AGE; 
-MISSING=.;

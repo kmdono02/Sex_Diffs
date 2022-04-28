@@ -1,5 +1,0 @@
-TITLE: Your title goes here
-DATA: FILE = "C:/Users/joshu/Desktop/GRA/Burrows/Sex_Differences/aMNLFA_Update/calibration.dat";
-VARIABLE: 
-NAMES = ID VNUM MOTOR SENS QREPB Q19 Q16 GNUM AGE; 
-MISSING=.;
