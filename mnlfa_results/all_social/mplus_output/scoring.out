@@ -1,0 +1,641 @@
+Mplus.VERSION.8.6
+MUTHEN & MUTHEN
+06/17/2021  12:35 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Scoring Model
+  DATA: FILE = C:/Users/kdono/OneDrive/Documents/mnlfa_mplus_dir/full.dat;
+  VARIABLE:
+  NAMES = ID EYEC RNAME SOCINT SOCREF QSHOW QQSO Q5 Q9 GNUM AGE;
+  MISSING=.;
+  !
+  !
+  !
+  !
+  USEVARIABLES= EYEC RNAME SOCINT SOCREF QSHOW QQSO Q5 Q9 AGE;
+  !
+  CLUSTER=ID;
+  CATEGORICAL= EYEC RNAME SOCINT SOCREF QSHOW QQSO Q5 Q9 ;
+  !
+  !
+  ANALYSIS: ESTIMATOR=ML;ALGORITHM=INTEGRATION;INTEGRATION=MONTECARLO;PROCESSORS=4;
+  TYPE=COMPLEX;
+  MODEL: [ETA@0];ETA@1;
+  ETA BY EYEC @2.863;
+  ETA BY RNAME @0.917;
+  ETA BY SOCINT @2.997;
+  ETA BY SOCREF @1.254;
+  ETA BY QSHOW @1.262;
+  ETA BY QQSO @5.554;
+  ETA BY Q5 @1.065;
+  ETA BY Q9 @2.779;
+  !NA;
+  [EYEC$1@2.515];
+  [RNAME$1@0.45];
+  [RNAME$2@1.907];
+  [SOCINT$1@1.536];
+  [SOCINT$2@5.934];
+  [SOCREF$1@0.683];
+  [SOCREF$2@1.954];
+  [QSHOW$1@0.198];
+  [QSHOW$2@2.988];
+  [QQSO$1@1.349];
+  [QQSO$2@8.758];
+  [Q5$1@0.899];
+  [Q5$2@2.202];
+  [Q9$1@1.051];
+  [Q9$2@4.076];
+  !
+  !
+  !
+  !
+  !
+  !
+  OUTPUT: tech1;
+  SAVEDATA: SAVE=FSCORES; FILE=scores.dat;
+
+
+
+*** WARNING in ANALYSIS command
+  Estimator ML is only allowed with TYPE=COMPLEX and replicate weights.
+  Default estimator will be used.
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables:  AGE
+*** WARNING in MODEL command
+  At least one variable is uncorrelated with all other variables in the model.
+  Check that this is what is intended.
+   3 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+Scoring Model
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1255
+
+Number of dependent variables                                    9
+Number of independent variables                                  0
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Continuous
+   AGE
+
+  Binary and ordered categorical (ordinal)
+   EYEC        RNAME       SOCINT      SOCREF      QSHOW       QQSO
+   Q5          Q9
+
+Continuous latent variables
+   ETA
+
+Variables with special functions
+
+  Cluster variable      ID
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-02
+    Relative loglikelihood change                        0.100D-05
+    Derivative                                           0.100D-02
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Integration Specifications
+  Type                                                  MONTECARLO
+  Number of integration points                                1000
+  Dimensions of numerical integration                            1
+  Adaptive quadrature                                           ON
+  Monte Carlo integration seed                                   0
+Link                                                         LOGIT
+Cholesky                                                       OFF
+
+Input data file(s)
+  C:/Users/kdono/OneDrive/Documents/mnlfa_mplus_dir/full.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns            10
+     Number of y missing data patterns           2
+     Number of u missing data patterns           9
+     Number of clusters                        377
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              EYEC          RNAME         SOCINT        SOCREF        QSHOW
+              ________      ________      ________      ________      ________
+ EYEC           0.998
+ RNAME          0.984         0.986
+ SOCINT         0.998         0.985         0.999
+ SOCREF         0.993         0.980         0.994         0.994
+ QSHOW          0.446         0.446         0.446         0.446         0.446
+ QQSO           0.446         0.446         0.446         0.446         0.446
+ Q5             0.549         0.537         0.550         0.544         0.000
+ Q9             0.552         0.539         0.553         0.547         0.000
+ AGE            0.998         0.985         0.998         0.993         0.445
+
+
+           Covariance Coverage
+              QQSO          Q5            Q9            AGE
+              ________      ________      ________      ________
+ QQSO           0.446
+ Q5             0.000         0.551
+ Q9             0.000         0.550         0.553
+ AGE            0.445         0.551         0.553         0.999
+
+
+     PROPORTION OF DATA PRESENT FOR U
+
+
+           Covariance Coverage
+              EYEC          RNAME         SOCINT        SOCREF        QSHOW
+              ________      ________      ________      ________      ________
+ EYEC           0.998
+ RNAME          0.984         0.986
+ SOCINT         0.998         0.985         0.999
+ SOCREF         0.993         0.980         0.994         0.994
+ QSHOW          0.446         0.446         0.446         0.446         0.446
+ QQSO           0.446         0.446         0.446         0.446         0.446
+ Q5             0.549         0.537         0.550         0.544         0.000
+ Q9             0.552         0.539         0.553         0.547         0.000
+
+
+           Covariance Coverage
+              QQSO          Q5            Q9
+              ________      ________      ________
+ QQSO           0.446
+ Q5             0.000         0.551
+ Q9             0.000         0.550         0.553
+
+
+     PROPORTION OF DATA PRESENT FOR Y
+
+
+           Covariance Coverage
+              AGE
+              ________
+ AGE            0.999
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    EYEC
+      Category 1    0.753          943.000
+      Category 2    0.247          310.000
+    RNAME
+      Category 1    0.580          718.000
+      Category 2    0.258          319.000
+      Category 3    0.162          200.000
+    SOCINT
+      Category 1    0.679          852.000
+      Category 2    0.281          352.000
+      Category 3    0.040           50.000
+    SOCREF
+      Category 1    0.609          760.000
+      Category 2    0.204          254.000
+      Category 3    0.187          233.000
+    QSHOW
+      Category 1    0.575          322.000
+      Category 2    0.334          187.000
+      Category 3    0.091           51.000
+    QQSO
+      Category 1    0.648          363.000
+      Category 2    0.279          156.000
+      Category 3    0.073           41.000
+    Q5
+      Category 1    0.648          448.000
+      Category 2    0.182          126.000
+      Category 3    0.169          117.000
+    Q9
+      Category 1    0.585          406.000
+      Category 2    0.300          208.000
+      Category 3    0.115           80.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     AGE                  18.732       0.717       5.500    0.08%       7.100     12.500     13.350
+            1254.000     122.864      -0.387      57.800    0.08%      24.000     25.300
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                        2
+
+Loglikelihood
+
+          H0 Value                      -10327.671
+          H0 Scaling Correction Factor      0.3814
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   20659.342
+          Bayesian (BIC)                 20669.612
+          Sample-Size Adjusted BIC       20663.259
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit for the Binary and Ordered Categorical
+(Ordinal) Outcomes**
+
+          Pearson Chi-Square
+
+          Value                           1448.299
+          Degrees of Freedom                  4370
+          P-Value                           1.0000
+
+          Likelihood Ratio Chi-Square
+
+          Value                            756.955
+          Degrees of Freedom                  4370
+          P-Value                           1.0000
+
+** Of the 1818 cells in the frequency table, 3
+   were deleted in the calculation of chi-square due to extreme values.
+
+Chi-Square Test for MCAR under the Unrestricted Latent Class Indicator Model
+
+          Pearson Chi-Square
+
+          Value                            413.248
+          Degrees of freedom cannot be computed for this model.
+
+          Likelihood Ratio Chi-Square
+
+          Value                            345.853
+          Degrees of freedom
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ ETA      BY
+    EYEC               2.863      0.000    999.000    999.000
+    RNAME              0.917      0.000    999.000    999.000
+    SOCINT             2.997      0.000    999.000    999.000
+    SOCREF             1.254      0.000    999.000    999.000
+    QSHOW              1.262      0.000    999.000    999.000
+    QQSO               5.554      0.000    999.000    999.000
+    Q5                 1.065      0.000    999.000    999.000
+    Q9                 2.779      0.000    999.000    999.000
+
+ Means
+    AGE               18.732      0.178    105.449      0.000
+    ETA                0.000      0.000    999.000    999.000
+
+ Thresholds
+    EYEC$1             2.515      0.000    999.000    999.000
+    RNAME$1            0.450      0.000    999.000    999.000
+    RNAME$2            1.907      0.000    999.000    999.000
+    SOCINT$1           1.536      0.000    999.000    999.000
+    SOCINT$2           5.934      0.000    999.000    999.000
+    SOCREF$1           0.683      0.000    999.000    999.000
+    SOCREF$2           1.954      0.000    999.000    999.000
+    QSHOW$1            0.198      0.000    999.000    999.000
+    QSHOW$2            2.988      0.000    999.000    999.000
+    QQSO$1             1.349      0.000    999.000    999.000
+    QQSO$2             8.758      0.000    999.000    999.000
+    Q5$1               0.899      0.000    999.000    999.000
+    Q5$2               2.202      0.000    999.000    999.000
+    Q9$1               1.051      0.000    999.000    999.000
+    Q9$2               4.076      0.000    999.000    999.000
+
+ Variances
+    AGE              122.882      3.258     37.712      0.000
+    ETA                1.000      0.000    999.000    999.000
+
+
+                    Estimate
+
+ EYEC
+    Category 1         0.773
+    Category 2         0.227
+ RNAME
+    Category 1         0.594
+    Category 2         0.244
+    Category 3         0.161
+ SOCINT
+    Category 1         0.671
+    Category 2         0.284
+    Category 3         0.045
+ SOCREF
+    Category 1         0.628
+    Category 2         0.194
+    Category 3         0.178
+ QSHOW
+    Category 1         0.538
+    Category 2         0.379
+    Category 3         0.083
+ QQSO
+    Category 1         0.591
+    Category 2         0.342
+    Category 3         0.067
+ Q5
+    Category 1         0.675
+    Category 2         0.187
+    Category 3         0.137
+ Q9
+    Category 1         0.626
+    Category 2         0.266
+    Category 3         0.108
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           TAU
+              EYEC$1        RNAME$1       RNAME$2       SOCINT$1      SOCINT$2
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           TAU
+              SOCREF$1      SOCREF$2      QSHOW$1       QSHOW$2       QQSO$1
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           TAU
+              QQSO$2        Q5$1          Q5$2          Q9$1          Q9$2
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           NU
+              EYEC          RNAME         SOCINT        SOCREF        QSHOW
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           NU
+              QQSO          Q5            Q9            AGE
+              ________      ________      ________      ________
+                    0             0             0             1
+
+
+           LAMBDA
+              ETA
+              ________
+ EYEC               0
+ RNAME              0
+ SOCINT             0
+ SOCREF             0
+ QSHOW              0
+ QQSO               0
+ Q5                 0
+ Q9                 0
+ AGE                0
+
+
+           THETA
+              EYEC          RNAME         SOCINT        SOCREF        QSHOW
+              ________      ________      ________      ________      ________
+ EYEC               0
+ RNAME              0             0
+ SOCINT             0             0             0
+ SOCREF             0             0             0             0
+ QSHOW              0             0             0             0             0
+ QQSO               0             0             0             0             0
+ Q5                 0             0             0             0             0
+ Q9                 0             0             0             0             0
+ AGE                0             0             0             0             0
+
+
+           THETA
+              QQSO          Q5            Q9            AGE
+              ________      ________      ________      ________
+ QQSO               0
+ Q5                 0             0
+ Q9                 0             0             0
+ AGE                0             0             0             2
+
+
+           ALPHA
+              ETA
+              ________
+                    0
+
+
+           BETA
+              ETA
+              ________
+ ETA                0
+
+
+           PSI
+              ETA
+              ________
+ ETA                0
+
+
+     STARTING VALUES
+
+
+           TAU
+              EYEC$1        RNAME$1       RNAME$2       SOCINT$1      SOCINT$2
+              ________      ________      ________      ________      ________
+                2.515         0.450         1.907         1.536         5.934
+
+
+           TAU
+              SOCREF$1      SOCREF$2      QSHOW$1       QSHOW$2       QQSO$1
+              ________      ________      ________      ________      ________
+                0.683         1.954         0.198         2.988         1.349
+
+
+           TAU
+              QQSO$2        Q5$1          Q5$2          Q9$1          Q9$2
+              ________      ________      ________      ________      ________
+                8.758         0.899         2.202         1.051         4.076
+
+
+           NU
+              EYEC          RNAME         SOCINT        SOCREF        QSHOW
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              QQSO          Q5            Q9            AGE
+              ________      ________      ________      ________
+                0.000         0.000         0.000        18.732
+
+
+           LAMBDA
+              ETA
+              ________
+ EYEC           2.863
+ RNAME          0.917
+ SOCINT         2.997
+ SOCREF         1.254
+ QSHOW          1.262
+ QQSO           5.554
+ Q5             1.065
+ Q9             2.779
+ AGE            0.000
+
+
+           THETA
+              EYEC          RNAME         SOCINT        SOCREF        QSHOW
+              ________      ________      ________      ________      ________
+ EYEC           1.000
+ RNAME          0.000         1.000
+ SOCINT         0.000         0.000         1.000
+ SOCREF         0.000         0.000         0.000         1.000
+ QSHOW          0.000         0.000         0.000         0.000         1.000
+ QQSO           0.000         0.000         0.000         0.000         0.000
+ Q5             0.000         0.000         0.000         0.000         0.000
+ Q9             0.000         0.000         0.000         0.000         0.000
+ AGE            0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              QQSO          Q5            Q9            AGE
+              ________      ________      ________      ________
+ QQSO           1.000
+ Q5             0.000         1.000
+ Q9             0.000         0.000         1.000
+ AGE            0.000         0.000         0.000        61.432
+
+
+           ALPHA
+              ETA
+              ________
+                0.000
+
+
+           BETA
+              ETA
+              ________
+ ETA            0.000
+
+
+           PSI
+              ETA
+              ________
+ ETA            1.000
+
+
+SAMPLE STATISTICS FOR ESTIMATED FACTOR SCORES
+
+
+     SAMPLE STATISTICS
+
+
+           Means
+              ETA           ETA_SE
+              ________      ________
+                0.026         0.486
+
+
+           Covariances
+              ETA           ETA_SE
+              ________      ________
+ ETA            0.719
+ ETA_SE        -0.091         0.017
+
+
+           Correlations
+              ETA           ETA_SE
+              ________      ________
+ ETA            1.000
+ ETA_SE        -0.816         1.000
+
+
+SAVEDATA INFORMATION
+
+
+  Save file
+    scores.dat
+
+  Order and format of variables
+
+    EYEC           F10.3
+    RNAME          F10.3
+    SOCINT         F10.3
+    SOCREF         F10.3
+    QSHOW          F10.3
+    QQSO           F10.3
+    Q5             F10.3
+    Q9             F10.3
+    AGE            F10.3
+    ETA            F10.3
+    ETA_SE         F10.3
+    ID             I4
+
+  Save file format
+    11F10.3 I4
+
+  Save file record length    10000
+
+  Save missing symbol        *
+
+
+     Beginning Time:  12:35:10
+        Ending Time:  12:36:24
+       Elapsed Time:  00:01:14
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen

@@ -1,0 +1,18 @@
+digraph Factor  {
+  rankdir=RL;
+  size="8,6";
+  node [fontname="Helvetica" fontsize=14 shape=box, width=2];
+  edge [fontname="Helvetica" fontsize=10];
+V1  [label = "aosi_q10_coordination_of_eye_gaze_and_action_recode"];
+V2  [label = "aosi_q17_atypical_motor"];
+V3  [label = "aosi_q18_atypical_sensory"];
+V4  [label = "aosi_q19_engagement_of_attention"];
+V5  [label = "aosi_q16_motor_control_and_behaviour"];
+node [shape=ellipse, width ="1"];
+ML1-> V1 [ label = 0.43 ];
+ML1-> V3 [ label = 0.42 ];
+ML1-> V4 [ label = 0.47 ];
+ML1-> V5 [ label = 0.71 ];
+{ rank=same;
+V1;V2;V3;V4;V5;}{ rank=same;
+ML1;}}

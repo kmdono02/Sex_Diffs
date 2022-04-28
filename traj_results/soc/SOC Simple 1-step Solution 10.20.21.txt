@@ -1,0 +1,56 @@
+Heterogenous linear mixed model 
+     fitted by maximum likelihood method 
+ 
+hlme(fixed = ETA_Z ~ AGE + GNUM + AGE * GNUM, mixture = ~AGE, 
+    random = ~1 + AGE, subject = "ID", classmb = ~GNUM, ng = 2, 
+    nwg = T, data = soc.factor_data)
+ 
+Statistical Model: 
+     Dataset: soc.factor_data 
+     Number of subjects: 377 
+     Number of observations: 1254 
+     Number of latent classes: 2 
+     Number of parameters: 13  
+ 
+Iteration process: 
+     Convergence criteria satisfied 
+     Number of iterations:  9 
+     Convergence criteria: parameters= 2.2e-14 
+                         : likelihood= 1.2e-11 
+                         : second derivatives= 2.1e-11 
+ 
+Goodness-of-fit statistics: 
+     maximum log-likelihood: -1669.91  
+     AIC: 3365.82  
+     BIC: 3416.94  
+ 
+ 
+Maximum Likelihood Estimates: 
+ 
+Fixed effects in the class-membership model:
+(the class of reference is the last class) 
+
+                     coef      Se   Wald p-value
+intercept class1  0.58025 0.28394  2.044 0.04099
+GNUM class1       0.18666 0.40046  0.466 0.64113
+
+Fixed effects in the longitudinal model:
+
+                     coef      Se   Wald p-value
+intercept class1  0.15039 0.09547  1.575 0.11520
+intercept class2  0.94115 0.12815  7.344 0.00000
+AGE class1       -0.01925 0.00374 -5.143 0.00000
+AGE class2       -0.01232 0.00730 -1.687 0.09168
+GNUM             -0.14519 0.11930 -1.217 0.22362
+AGE:GNUM         -0.00767 0.00491 -1.563 0.11804
+
+
+Variance-covariance matrix of the random-effects:
+          intercept     AGE
+intercept   0.48245        
+AGE        -0.02969 0.00205
+
+                                    coef      Se
+Proportional coefficient class1  0.00000 0.21029
+Residual standard error:         0.78489 0.02061
+

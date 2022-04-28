@@ -1,0 +1,17 @@
+------Begin Mplus Model Run: 21Aug2021 22:46:50------
+Run options:
+	Recursive (run models in subdirectories): FALSE
+	Show output on console: FALSE
+	Replace existing outfile: never
+------
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\meanimpactscript.inp
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\measinvarscript_MOTOR.inp
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\measinvarscript_Q16.inp
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\measinvarscript_Q19.inp
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\measinvarscript_QREPB.inp
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\measinvarscript_SENS.inp
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\round2calibration.inp
+Currently running model: round3calibration.inp
+Skipping model because output file already exists for: C:\Users\joshu\Desktop\GRA\Burrows\Sex_Differences\aMNLFA_Update\varimpactscript.inp
+
+------End Mplus Model Run: 21Aug2021 22:46:51------

@@ -1,0 +1,31 @@
+
+Call:
+glm(formula = class_fct ~ GCHAR + v24_asd + `V06 tsi,mother_education`, 
+    family = binomial(), data = soc_data_glm)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.8975  -0.5940  -0.5082   0.6741   2.0566  
+
+Coefficients:
+                                          Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                                1.36852    0.49495   2.765  0.00569 ** 
+GCHARmale                                 -0.33592    0.36147  -0.929  0.35272    
+v24_asdNegative                           -3.01404    0.40209  -7.496 6.59e-14 ***
+`V06 tsi,mother_education`grad_degree     -0.00481    0.44243  -0.011  0.99133    
+`V06 tsi,mother_education`high_school      0.34618    0.64758   0.535  0.59295    
+`V06 tsi,mother_education`some_college     0.25102    0.42119   0.596  0.55118    
+`V06 tsi,mother_education`some_grad_level  0.38548    1.15935   0.332  0.73951    
+`V06 tsi,mother_education`some_hs          1.17230    1.26462   0.927  0.35393    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 307.19  on 254  degrees of freedom
+Residual deviance: 230.64  on 247  degrees of freedom
+  (122 observations deleted due to missingness)
+AIC: 246.64
+
+Number of Fisher Scoring iterations: 4
+

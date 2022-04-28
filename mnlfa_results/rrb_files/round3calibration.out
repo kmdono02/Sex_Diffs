@@ -1,0 +1,345 @@
+Mplus VERSION 8.6
+MUTHEN & MUTHEN
+08/21/2021  10:47 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Final Model to Get Scoring Parameters
+  DATA: FILE =
+   "C:/Users/joshu/Desktop/GRA/Burrows/Sex_Differences/aMNLFA_Update/calibration.dat";
+  VARIABLE:
+  NAMES = ID VNUM MOTOR SENS QREPB Q19 Q16 GNUM AGE;
+  MISSING=.;
+  !
+  !
+  !
+  !
+  USEVARIABLES= MOTOR SENS QREPB Q19 Q16 GNUM AGE;
+  AUXILIARY= ID VNUM ;
+  CATEGORICAL= MOTOR SENS QREPB Q19 Q16 ;
+  !
+  CONSTRAINT= GNUM ;
+  ANALYSIS: ESTIMATOR=ML;ALGORITHM=INTEGRATION;INTEGRATION=MONTECARLO;PROCESSORS=4;
+  MODEL: [ETA@0];ETA*(veta);
+  ETA BY MOTOR*(l_1);
+  ETA BY SENS*(l_2);
+  ETA BY QREPB*(l_3);
+  ETA BY Q19*(l_4);
+  ETA BY Q16*(l_5);
+  ETA ON AGE; ETA ON GNUM;
+  !
+
+  !
+
+
+  QREPB on GNUM;
+
+
+
+  !
+
+
+
+
+  Q16 on AGE;
+  MODEL CONSTRAINT: new(
+  !
+  ! !
+  ! !
+  l3_0*1   l3_1*0
+  ! !
+  ! !
+  );
+  veta=1*exp(
+  0);
+  ! !;
+  ! !;
+  l_3=l3_0 +l3_1*GNUM;
+  ! !;
+  ! !;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+Final Model to Get Scoring Parameters
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         377
+
+Number of dependent variables                                    5
+Number of independent variables                                  2
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   MOTOR       SENS        QREPB       Q19         Q16
+
+Observed independent variables
+   GNUM        AGE
+
+Observed auxiliary variables
+   ID          VNUM
+
+Continuous latent variables
+   ETA
+
+
+Estimator                                                       ML
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-02
+    Relative loglikelihood change                        0.100D-05
+    Derivative                                           0.100D-02
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Integration Specifications
+  Type                                                  MONTECARLO
+  Number of integration points                                1000
+  Dimensions of numerical integration                            1
+  Adaptive quadrature                                           ON
+  Monte Carlo integration seed                                   0
+Link                                                         LOGIT
+Cholesky                                                        ON
+
+Input data file(s)
+  C:/Users/joshu/Desktop/GRA/Burrows/Sex_Differences/aMNLFA_Update/calibration.d
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             5
+     Number of y missing data patterns           0
+     Number of u missing data patterns           5
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR U
+
+
+           Covariance Coverage
+              MOTOR         SENS          QREPB         Q19           Q16
+              ________      ________      ________      ________      ________
+ MOTOR          1.000
+ SENS           0.997         0.997
+ QREPB          0.438         0.438         0.438
+ Q19            0.557         0.554         0.000         0.557
+ Q16            0.560         0.557         0.000         0.557         0.560
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    MOTOR
+      Category 1    0.873          329.000
+      Category 2    0.048           18.000
+      Category 3    0.080           30.000
+    SENS
+      Category 1    0.870          327.000
+      Category 2    0.072           27.000
+      Category 3    0.059           22.000
+    QREPB
+      Category 1    0.673          111.000
+      Category 2    0.285           47.000
+      Category 3    0.042            7.000
+    Q19
+      Category 1    0.910          191.000
+      Category 2    0.090           19.000
+    Q16
+      Category 1    0.867          183.000
+      Category 2    0.114           24.000
+      Category 3    0.019            4.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     GNUM                  0.422       0.317       0.000   57.82%       0.000      0.000      0.000
+             377.000       0.244      -1.900       1.000   42.18%       1.000      1.000
+     AGE                  19.030       0.786       5.600    0.27%       8.400     12.500     13.100
+             377.000     126.703      -0.289      51.900    0.27%      24.100     25.600
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+  ERROR OCCURRED IN THE BRANT WALD TEST FOR PROPORTIONAL ODDS FOR Q16.
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       19
+
+Loglikelihood
+
+          H0 Value                        -591.467
+
+Information Criteria
+
+          Akaike (AIC)                    1220.933
+          Bayesian (BIC)                  1295.646
+          Sample-Size Adjusted BIC        1235.363
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ ETA      BY
+    MOTOR              1.081      0.322      3.355      0.001
+    SENS               2.625      1.183      2.219      0.026
+    QREPB            999.000      0.000    999.000    999.000
+    Q19                1.451      0.571      2.543      0.011
+    Q16                0.681      0.397      1.717      0.086
+
+ ETA        ON
+    AGE                0.016      0.008      1.948      0.051
+    GNUM              -0.175      0.183     -0.955      0.340
+
+ QREPB      ON
+    GNUM              -2.148      1.144     -1.877      0.060
+
+ Q16        ON
+    AGE               -0.509      0.107     -4.762      0.000
+
+ Intercepts
+    ETA                0.000      0.000    999.000    999.000
+
+ Thresholds
+    MOTOR$1            2.563      0.415      6.175      0.000
+    MOTOR$2            3.148      0.456      6.910      0.000
+    SENS$1             4.258      1.404      3.033      0.002
+    SENS$2             5.696      1.790      3.182      0.001
+    QREPB$1            0.611      0.325      1.880      0.060
+    QREPB$2            3.364      0.551      6.100      0.000
+    Q19$1              3.179      0.640      4.963      0.000
+    Q16$1             -2.448      0.834     -2.937      0.003
+    Q16$2             -0.035      0.919     -0.038      0.970
+
+ Residual Variances
+    ETA                1.000      0.000    999.000    999.000
+
+New/Additional Parameters
+    L3_0               0.369      0.363      1.016      0.310
+    L3_1               1.987      0.986      2.014      0.044
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.485E-05
+       (ratio of smallest to largest eigenvalue)
+
+
+RESULTS IN PROBABILITY SCALE
+
+                    Estimate
+
+ MOTOR
+    Category 1         0.871
+    Category 2         0.048
+    Category 3         0.081
+ SENS
+    Category 1         0.873
+    Category 2         0.070
+    Category 3         0.057
+ QREPB
+    Category 1         0.751
+    Category 2         0.224
+    Category 3         0.025
+ Q19
+    Category 1         0.893
+    Category 2         0.107
+ Q16
+    Category 1         0.925
+    Category 2         0.065
+    Category 3         0.010
+
+
+LOGISTIC REGRESSION ODDS RATIO RESULTS
+
+                                                95% C.I.
+                    Estimate       S.E.  Lower 2.5% Upper 2.5%
+
+ QREPB      ON
+    GNUM               0.117      0.134      0.012      1.099
+
+ Q16        ON
+    AGE                0.601      0.064      0.487      0.741
+
+
+BRANT WALD TEST FOR PROPORTIONAL ODDS
+
+                                   Degrees of
+                      Chi-Square     Freedom   P-Value
+
+  MOTOR
+    Overall test           3.857         2      0.145
+    GNUM                   0.202         1      0.653
+    AGE                    3.630         1      0.057
+
+  SENS
+    Overall test          15.948         2      0.000
+    GNUM                   4.265         1      0.039
+    AGE                   11.851         1      0.001
+
+  QREPB
+    Overall test         110.577         2      0.000
+    GNUM                   1.839         1      0.175
+    AGE                  102.082         1      0.000
+
+
+     Beginning Time:  22:47:20
+        Ending Time:  22:49:38
+       Elapsed Time:  00:02:18
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen

@@ -1,0 +1,487 @@
+Mplus.VERSION.8.6
+MUTHEN & MUTHEN
+06/17/2021  11:43 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Round 2 Calibration Model
+  DATA: FILE = C:/Users/kdono/OneDrive/Documents/mnlfa_mplus_dir/calibration.dat;
+  VARIABLE:
+  NAMES = ID MOTOR SENS QREPB Q19 Q16 GNUM AGE;
+  MISSING=.;
+  !
+  !
+  !
+  !
+  USEVARIABLES= MOTOR AGE SENS QREPB Q19 Q16;
+  !
+  CATEGORICAL= MOTOR SENS QREPB Q19 Q16 ;
+  !
+  CONSTRAINT= AGE ;
+  ANALYSIS: ESTIMATOR=ML;ALGORITHM=INTEGRATION;INTEGRATION=MONTECARLO;PROCESSORS=4;
+  MODEL: [ETA@0];ETA*(veta);
+  ETA BY MOTOR*(l_1);
+  ETA BY SENS*(l_2);
+  ETA BY QREPB*(l_3);
+  ETA BY Q19*(l_4);
+  ETA BY Q16*(l_5);
+  !
+  MOTOR on AGE;
+  SENS on AGE;
+  !
+  !
+  !
+  MODEL CONSTRAINT: new( !
+  !
+  l200*1   l21*0
+  !
+  !
+  !
+  );
+  !;
+  l_2=l200 +l21*AGE;
+  !;
+  !;
+  !;
+  veta=1*exp( 0);
+  OUTPUT: tech1;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+Round 2 Calibration Model
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         377
+
+Number of dependent variables                                    5
+Number of independent variables                                  1
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   MOTOR       SENS        QREPB       Q19         Q16
+
+Observed independent variables
+   AGE
+
+Continuous latent variables
+   ETA
+
+
+Estimator                                                       ML
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-02
+    Relative loglikelihood change                        0.100D-05
+    Derivative                                           0.100D-02
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Integration Specifications
+  Type                                                  MONTECARLO
+  Number of integration points                                1000
+  Dimensions of numerical integration                            1
+  Adaptive quadrature                                           ON
+  Monte Carlo integration seed                                   0
+Link                                                         LOGIT
+Cholesky                                                        ON
+
+Input data file(s)
+  C:/Users/kdono/OneDrive/Documents/mnlfa_mplus_dir/calibration.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             4
+     Number of y missing data patterns           0
+     Number of u missing data patterns           4
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR U
+
+
+           Covariance Coverage
+              MOTOR         SENS          QREPB         Q19           Q16
+              ________      ________      ________      ________      ________
+ MOTOR          1.000
+ SENS           0.997         0.997
+ QREPB          0.432         0.432         0.432
+ Q19            0.562         0.560         0.000         0.562
+ Q16            0.568         0.565         0.000         0.562         0.568
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    MOTOR
+      Category 1    0.841          317.000
+      Category 2    0.069           26.000
+      Category 3    0.090           34.000
+    SENS
+      Category 1    0.854          321.000
+      Category 2    0.074           28.000
+      Category 3    0.072           27.000
+    QREPB
+      Category 1    0.620          101.000
+      Category 2    0.301           49.000
+      Category 3    0.080           13.000
+    Q19
+      Category 1    0.910          193.000
+      Category 2    0.085           18.000
+      Category 3    0.005            1.000
+    Q16
+      Category 1    0.850          182.000
+      Category 2    0.117           25.000
+      Category 3    0.033            7.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     AGE                  18.286       0.693       5.800    0.53%       8.000     12.500     13.200
+             377.000     103.588      -0.442      44.900    0.27%      23.900     24.900
+
+     WARNING: THE MODEL ESTIMATION HAS REACHED A SADDLE POINT OR A POINT WHERE THE
+     OBSERVED AND THE EXPECTED INFORMATION MATRICES DO NOT MATCH.
+     AN ADJUSTMENT TO THE ESTIMATION OF THE INFORMATION MATRIX HAS BEEN MADE.
+     THE CONDITION NUMBER IS      -0.896D-05.
+     THE PROBLEM MAY ALSO BE RESOLVED BY DECREASING THE VALUE OF THE
+     MCONVERGENCE OR LOGCRITERION OPTIONS OR BY CHANGING THE STARTING VALUES
+     OR BY INCREASING THE NUMBER OF INTEGRATION POINTS OR BY USING THE MLF ESTIMATOR.
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+  ERROR OCCURRED IN THE BRANT WALD TEST FOR PROPORTIONAL ODDS FOR Q19.
+
+  ERROR OCCURRED IN THE BRANT WALD TEST FOR PROPORTIONAL ODDS FOR Q16.
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       18
+
+Loglikelihood
+
+          H0 Value                        -690.658
+
+Information Criteria
+
+          Akaike (AIC)                    1417.315
+          Bayesian (BIC)                  1488.096
+          Sample-Size Adjusted BIC        1430.986
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ ETA      BY
+    MOTOR              0.419      0.219      1.916      0.055
+    SENS             999.000      0.000    999.000    999.000
+    QREPB              2.570      1.396      1.841      0.066
+    Q19                1.326      0.518      2.558      0.011
+    Q16                1.393      0.472      2.950      0.003
+
+ MOTOR      ON
+    AGE                0.031      0.013      2.316      0.021
+
+ SENS       ON
+    AGE                0.086      0.019      4.403      0.000
+
+ Means
+    ETA                0.000      0.000    999.000    999.000
+
+ Thresholds
+    MOTOR$1            2.337      0.322      7.259      0.000
+    MOTOR$2            3.004      0.346      8.689      0.000
+    SENS$1             4.435      0.565      7.855      0.000
+    SENS$2             5.498      0.610      9.018      0.000
+    QREPB$1            1.001      0.515      1.942      0.052
+    QREPB$2            4.435      1.678      2.644      0.008
+    Q19$1              2.930      0.505      5.802      0.000
+    Q19$2              6.165      1.146      5.381      0.000
+    Q16$1              2.287      0.401      5.697      0.000
+    Q16$2              4.214      0.637      6.618      0.000
+
+ Variances
+    ETA                1.000      0.000    999.000    999.000
+
+New/Additional Parameters
+    L200               3.244      0.636      5.098      0.000
+    L21               -0.072      0.023     -3.169      0.002
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix             -0.896E-05
+       (ratio of smallest to largest eigenvalue)
+
+
+LOGISTIC REGRESSION ODDS RATIO RESULTS
+
+                                                95% C.I.
+                    Estimate       S.E.  Lower 2.5% Upper 2.5%
+
+ MOTOR      ON
+    AGE                1.032      0.014      1.005      1.059
+
+ SENS       ON
+    AGE                1.089      0.021      1.049      1.132
+
+
+BRANT WALD TEST FOR PROPORTIONAL ODDS
+
+                                   Degrees of
+                      Chi-Square     Freedom   P-Value
+
+  MOTOR
+    Overall test          11.239         1      0.001
+    AGE                   11.239         1      0.001
+
+  SENS
+    Overall test          19.800         1      0.000
+    AGE                   19.800         1      0.000
+
+  QREPB
+    Overall test         155.295         1      0.000
+    AGE                  155.295         1      0.000
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           TAU
+              MOTOR$1       MOTOR$2       SENS$1        SENS$2        QREPB$1
+              ________      ________      ________      ________      ________
+                    9            10            11            12            13
+
+
+           TAU
+              QREPB$2       Q19$1         Q19$2         Q16$1         Q16$2
+              ________      ________      ________      ________      ________
+                   14            15            16            17            18
+
+
+           NU
+              MOTOR         SENS          QREPB         Q19           Q16
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           NU
+              AGE
+              ________
+                    0
+
+
+           LAMBDA
+              ETA           MOTOR         SENS          AGE
+              ________      ________      ________      ________
+ MOTOR              0             0             0             0
+ SENS               0             0             0             0
+ QREPB              1             0             0             0
+ Q19                2             0             0             0
+ Q16                3             0             0             0
+ AGE                0             0             0             0
+
+
+           THETA
+              MOTOR         SENS          QREPB         Q19           Q16
+              ________      ________      ________      ________      ________
+ MOTOR              0
+ SENS               0             0
+ QREPB              0             0             0
+ Q19                0             0             0             0
+ Q16                0             0             0             0             0
+ AGE                0             0             0             0             0
+
+
+           THETA
+              AGE
+              ________
+ AGE                0
+
+
+           ALPHA
+              ETA           MOTOR         SENS          AGE
+              ________      ________      ________      ________
+                    0             0             0             0
+
+
+           BETA
+              ETA           MOTOR         SENS          AGE
+              ________      ________      ________      ________
+ ETA                0             0             0             0
+ MOTOR              4             0             0             5
+ SENS               6             0             0             7
+ AGE                0             0             0             0
+
+
+           PSI
+              ETA           MOTOR         SENS          AGE
+              ________      ________      ________      ________
+ ETA                8
+ MOTOR              0             0
+ SENS               0             0             0
+ AGE                0             0             0             0
+
+
+     PARAMETER SPECIFICATION FOR THE ADDITIONAL PARAMETERS
+
+
+           NEW/ADDITIONAL PARAMETERS
+              L200          L21
+              ________      ________
+                   19            20
+
+
+     STARTING VALUES
+
+
+           TAU
+              MOTOR$1       MOTOR$2       SENS$1        SENS$2        QREPB$1
+              ________      ________      ________      ________      ________
+                1.665         2.311         1.764         2.559         0.488
+
+
+           TAU
+              QREPB$2       Q19$1         Q19$2         Q16$1         Q16$2
+              ________      ________      ________      ________      ________
+                2.446         2.318         5.352         1.738         3.387
+
+
+           NU
+              MOTOR         SENS          QREPB         Q19           Q16
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              AGE
+              ________
+                0.000
+
+
+           LAMBDA
+              ETA           MOTOR         SENS          AGE
+              ________      ________      ________      ________
+ MOTOR          0.000         1.000         0.000         0.000
+ SENS           0.000         0.000         1.000         0.000
+ QREPB          1.000         0.000         0.000         0.000
+ Q19            1.000         0.000         0.000         0.000
+ Q16            1.000         0.000         0.000         0.000
+ AGE            0.000         0.000         0.000         1.000
+
+
+           THETA
+              MOTOR         SENS          QREPB         Q19           Q16
+              ________      ________      ________      ________      ________
+ MOTOR          0.000
+ SENS           0.000         0.000
+ QREPB          0.000         0.000         1.000
+ Q19            0.000         0.000         0.000         1.000
+ Q16            0.000         0.000         0.000         0.000         1.000
+ AGE            0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AGE
+              ________
+ AGE            0.000
+
+
+           ALPHA
+              ETA           MOTOR         SENS          AGE
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           BETA
+              ETA           MOTOR         SENS          AGE
+              ________      ________      ________      ________
+ ETA            0.000         0.000         0.000         0.000
+ MOTOR          1.000         0.000         0.000         0.000
+ SENS           1.000         0.000         0.000         0.000
+ AGE            0.000         0.000         0.000         0.000
+
+
+           PSI
+              ETA           MOTOR         SENS          AGE
+              ________      ________      ________      ________
+ ETA            0.050
+ MOTOR          0.000         1.000
+ SENS           0.000         0.000         1.000
+ AGE            0.000         0.000         0.000        51.794
+
+
+     STARTING VALUES FOR THE ADDITIONAL PARAMETERS
+
+
+           NEW/ADDITIONAL PARAMETERS
+              L200          L21
+              ________      ________
+                1.000         0.000
+
+
+     Beginning Time:  11:43:01
+        Ending Time:  11:44:13
+       Elapsed Time:  00:01:12
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen

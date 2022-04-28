@@ -1,0 +1,767 @@
+Mplus VERSION 8.6
+MUTHEN & MUTHEN
+08/21/2021  10:04 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Scoring Model
+  DATA: FILE = "C:/Users/joshu/Desktop/GRA/Burrows/Sex_Differences/aMNLFA_Update/full.dat";
+  VARIABLE:
+  NAMES = ID VNUM EYEC RNAME SOCINT SOCREF QSHOW QQSO Q5 Q9 GNUM AGE;
+  MISSING=.;
+  !
+  !
+  !
+  !
+  USEVARIABLES= EYEC RNAME SOCINT SOCREF QSHOW QQSO Q5 Q9 GNUM AGE;
+  cluster=ID;
+  CATEGORICAL= EYEC RNAME SOCINT SOCREF QSHOW QQSO Q5 Q9 ;
+  !
+  CONSTRAINT= GNUM ;
+  ANALYSIS: ESTIMATOR=ML; ALGORITHM=INTEGRATION; INTEGRATION=MONTECARLO; PROCESSORS=4;
+   type=complex;
+  MODEL: [ETA@0];ETA*(veta);
+  ETA BY EYEC @1.918;
+  ETA BY RNAME @0.705;
+  ETA BY SOCINT @4.653;
+  ETA BY SOCREF*(l_4);
+  ETA BY QSHOW @1.876;
+  ETA BY QQSO @2.99;
+  ETA BY Q5 @1.047;
+  ETA BY Q9 @3.313;
+  ETA ON GNUM@-0.253;
+  ETA ON AGE@-0.014;
+  RNAME ON AGE@-0.053;
+  SOCREF ON GNUM@-0.28;
+  SOCREF ON AGE@-0.034;
+  QSHOW ON AGE@-0.076;
+  [EYEC$1@0.878];
+  [RNAME$1@-0.924];
+  [RNAME$2@0.685];
+  [SOCINT$1@0.661];
+  [SOCINT$2@7.536];
+  [SOCREF$1@-0.608];
+  [SOCREF$2@0.803];
+  [QSHOW$1@-2.969];
+  [QSHOW$2@0.118];
+  [QQSO$1@-0.284];
+  [QQSO$2@3.934];
+  [Q5$1@0.243];
+  [Q5$2@1.599];
+  [Q9$1@0.049];
+  [Q9$2@3.545];
+  MODEL CONSTRAINT:
+    veta=1*exp(
+    0);
+    ! !;
+    ! !;
+    ! !;
+    l_4=1.949 -0.877*GNUM;
+    ! !;
+    ! !;
+    ! !;
+    ! !;
+
+
+
+  OUTPUT: tech1;
+  SAVEDATA: SAVE=FSCORES; FILE=scores.dat;
+
+
+
+*** WARNING in ANALYSIS command
+  Estimator ML is only allowed with TYPE=COMPLEX and replicate weights.
+  Default estimator will be used.
+*** WARNING
+  Data set contains cases with missing on x-variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on x-variables:  1
+   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+Scoring Model
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1254
+
+Number of dependent variables                                    8
+Number of independent variables                                  2
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   EYEC        RNAME       SOCINT      SOCREF      QSHOW       QQSO
+   Q5          Q9
+
+Observed independent variables
+   GNUM        AGE
+
+Continuous latent variables
+   ETA
+
+Variables with special functions
+
+  Cluster variable      ID
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-02
+    Relative loglikelihood change                        0.100D-05
+    Derivative                                           0.100D-02
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Integration Specifications
+  Type                                                  MONTECARLO
+  Number of integration points                                1000
+  Dimensions of numerical integration                            1
+  Adaptive quadrature                                           ON
+  Monte Carlo integration seed                                   0
+Link                                                         LOGIT
+Cholesky                                                        ON
+
+Input data file(s)
+  C:/Users/joshu/Desktop/GRA/Burrows/Sex_Differences/aMNLFA_Update/full.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             9
+     Number of y missing data patterns           0
+     Number of u missing data patterns           9
+     Number of clusters                        377
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR U
+
+
+           Covariance Coverage
+              EYEC          RNAME         SOCINT        SOCREF        QSHOW
+              ________      ________      ________      ________      ________
+ EYEC           0.998
+ RNAME          0.984         0.986
+ SOCINT         0.998         0.985         0.999
+ SOCREF         0.993         0.980         0.994         0.994
+ QSHOW          0.446         0.446         0.446         0.446         0.446
+ QQSO           0.446         0.446         0.446         0.446         0.446
+ Q5             0.549         0.537         0.550         0.545         0.000
+ Q9             0.553         0.539         0.553         0.548         0.000
+
+
+           Covariance Coverage
+              QQSO          Q5            Q9
+              ________      ________      ________
+ QQSO           0.446
+ Q5             0.000         0.551
+ Q9             0.000         0.550         0.553
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    EYEC
+      Category 1    0.752          942.000
+      Category 2    0.248          310.000
+    RNAME
+      Category 1    0.580          717.000
+      Category 2    0.258          319.000
+      Category 3    0.162          200.000
+    SOCINT
+      Category 1    0.679          851.000
+      Category 2    0.281          352.000
+      Category 3    0.040           50.000
+    SOCREF
+      Category 1    0.610          760.000
+      Category 2    0.203          253.000
+      Category 3    0.187          233.000
+    QSHOW
+      Category 1    0.574          321.000
+      Category 2    0.335          187.000
+      Category 3    0.091           51.000
+    QQSO
+      Category 1    0.648          362.000
+      Category 2    0.279          156.000
+      Category 3    0.073           41.000
+    Q5
+      Category 1    0.648          448.000
+      Category 2    0.182          126.000
+      Category 3    0.169          117.000
+    Q9
+      Category 1    0.585          406.000
+      Category 2    0.300          208.000
+      Category 3    0.115           80.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     GNUM                  0.420       0.323       0.000   57.97%       0.000      0.000      0.000
+            1254.000       0.244      -1.896       1.000   42.03%       1.000      1.000
+     AGE                  18.732       0.717       5.500    0.08%       7.100     12.500     13.350
+            1254.000     122.864      -0.387      57.800    0.08%      24.000     25.300
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                        0
+
+Loglikelihood
+
+          H0 Value                       -5462.555
+
+Information Criteria
+
+          Akaike (AIC)                   10925.110
+          Bayesian (BIC)                 10925.110
+          Sample-Size Adjusted BIC       10925.110
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ ETA      BY
+    EYEC               1.918      0.000    999.000    999.000
+    RNAME              0.705      0.000    999.000    999.000
+    SOCINT             4.653      0.000    999.000    999.000
+    SOCREF           999.000      0.000    999.000    999.000
+    QSHOW              1.876      0.000    999.000    999.000
+    QQSO               2.990      0.000    999.000    999.000
+    Q5                 1.047      0.000    999.000    999.000
+    Q9                 3.313      0.000    999.000    999.000
+
+ ETA        ON
+    GNUM              -0.253      0.000    999.000    999.000
+    AGE               -0.014      0.000    999.000    999.000
+
+ RNAME      ON
+    AGE               -0.053      0.000    999.000    999.000
+
+ SOCREF     ON
+    GNUM              -0.280      0.000    999.000    999.000
+    AGE               -0.034      0.000    999.000    999.000
+
+ QSHOW      ON
+    AGE               -0.076      0.000    999.000    999.000
+
+ Intercepts
+    ETA                0.000      0.000    999.000    999.000
+
+ Thresholds
+    EYEC$1             0.878      0.000    999.000    999.000
+    RNAME$1           -0.924      0.000    999.000    999.000
+    RNAME$2            0.685      0.000    999.000    999.000
+    SOCINT$1           0.661      0.000    999.000    999.000
+    SOCINT$2           7.536      0.000    999.000    999.000
+    SOCREF$1          -0.608      0.000    999.000    999.000
+    SOCREF$2           0.803      0.000    999.000    999.000
+    QSHOW$1           -2.969      0.000    999.000    999.000
+    QSHOW$2            0.118      0.000    999.000    999.000
+    QQSO$1            -0.284      0.000    999.000    999.000
+    QQSO$2             3.934      0.000    999.000    999.000
+    Q5$1               0.243      0.000    999.000    999.000
+    Q5$2               1.599      0.000    999.000    999.000
+    Q9$1               0.049      0.000    999.000    999.000
+    Q9$2               3.545      0.000    999.000    999.000
+
+ Residual Variances
+    ETA                1.000      0.000    999.000    999.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.100E+01
+       (ratio of smallest to largest eigenvalue)
+
+
+RESULTS IN PROBABILITY SCALE
+
+                    Estimate
+
+ EYEC
+    Category 1         0.728
+    Category 2         0.272
+ RNAME
+    Category 1         0.565
+    Category 2         0.273
+    Category 3         0.162
+ SOCINT
+    Category 1         0.680
+    Category 2         0.285
+    Category 3         0.034
+ SOCREF
+    Category 1         0.624
+    Category 2         0.174
+    Category 3         0.202
+ QSHOW
+    Category 1         0.377
+    Category 2         0.409
+    Category 3         0.214
+ QQSO
+    Category 1         0.592
+    Category 2         0.331
+    Category 3         0.077
+ Q5
+    Category 1         0.625
+    Category 2         0.213
+    Category 3         0.162
+ Q9
+    Category 1         0.631
+    Category 2         0.263
+    Category 3         0.106
+
+
+LOGISTIC REGRESSION ODDS RATIO RESULTS
+
+                                                95% C.I.
+                    Estimate       S.E.  Lower 2.5% Upper 2.5%
+
+ RNAME      ON
+    AGE                0.948      0.000      0.948      0.948
+
+ SOCREF     ON
+    GNUM               0.756      0.000      0.756      0.756
+    AGE                0.967      0.000      0.967      0.967
+
+ QSHOW      ON
+    AGE                0.927      0.000      0.927      0.927
+
+
+BRANT WALD TEST FOR PROPORTIONAL ODDS
+
+                                   Degrees of
+                      Chi-Square     Freedom   P-Value
+
+  RNAME
+    Overall test          13.574         2      0.001
+    GNUM                   0.000         1      0.996
+    AGE                   13.521         1      0.000
+
+  SOCINT
+    Overall test          11.921         2      0.003
+    GNUM                   2.281         1      0.131
+    AGE                    9.314         1      0.002
+
+  SOCREF
+    Overall test          32.943         2      0.000
+    GNUM                   0.110         1      0.741
+    AGE                   32.931         1      0.000
+
+  QSHOW
+    Overall test         485.329         2      0.000
+    GNUM                   4.304         1      0.038
+    AGE                  476.251         1      0.000
+
+  QQSO
+    Overall test         928.083         2      0.000
+    GNUM                   0.493         1      0.483
+    AGE                  826.667         1      0.000
+
+  Q5
+    Overall test         377.004         2      0.000
+    GNUM                   0.206         1      0.650
+    AGE                  376.262         1      0.000
+
+  Q9
+    Overall test         702.137         2      0.000
+    GNUM                   0.027         1      0.869
+    AGE                  700.672         1      0.000
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           TAU
+              EYEC$1        RNAME$1       RNAME$2       SOCINT$1      SOCINT$2
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           TAU
+              SOCREF$1      SOCREF$2      QSHOW$1       QSHOW$2       QQSO$1
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           TAU
+              QQSO$2        Q5$1          Q5$2          Q9$1          Q9$2
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           NU
+              EYEC          RNAME         SOCINT        SOCREF        QSHOW
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           NU
+              QQSO          Q5            Q9            GNUM          AGE
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           LAMBDA
+              ETA           RNAME         SOCREF        QSHOW         GNUM
+              ________      ________      ________      ________      ________
+ EYEC               0             0             0             0             0
+ RNAME              0             0             0             0             0
+ SOCINT             0             0             0             0             0
+ SOCREF             0             0             0             0             0
+ QSHOW              0             0             0             0             0
+ QQSO               0             0             0             0             0
+ Q5                 0             0             0             0             0
+ Q9                 0             0             0             0             0
+ GNUM               0             0             0             0             0
+ AGE                0             0             0             0             0
+
+
+           LAMBDA
+              AGE
+              ________
+ EYEC               0
+ RNAME              0
+ SOCINT             0
+ SOCREF             0
+ QSHOW              0
+ QQSO               0
+ Q5                 0
+ Q9                 0
+ GNUM               0
+ AGE                0
+
+
+           THETA
+              EYEC          RNAME         SOCINT        SOCREF        QSHOW
+              ________      ________      ________      ________      ________
+ EYEC               0
+ RNAME              0             0
+ SOCINT             0             0             0
+ SOCREF             0             0             0             0
+ QSHOW              0             0             0             0             0
+ QQSO               0             0             0             0             0
+ Q5                 0             0             0             0             0
+ Q9                 0             0             0             0             0
+ GNUM               0             0             0             0             0
+ AGE                0             0             0             0             0
+
+
+           THETA
+              QQSO          Q5            Q9            GNUM          AGE
+              ________      ________      ________      ________      ________
+ QQSO               0
+ Q5                 0             0
+ Q9                 0             0             0
+ GNUM               0             0             0             0
+ AGE                0             0             0             0             0
+
+
+           ALPHA
+              ETA           RNAME         SOCREF        QSHOW         GNUM
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           ALPHA
+              AGE
+              ________
+                    0
+
+
+           BETA
+              ETA           RNAME         SOCREF        QSHOW         GNUM
+              ________      ________      ________      ________      ________
+ ETA                0             0             0             0             0
+ RNAME              0             0             0             0             0
+ SOCREF             1             0             0             0             0
+ QSHOW              0             0             0             0             0
+ GNUM               0             0             0             0             0
+ AGE                0             0             0             0             0
+
+
+           BETA
+              AGE
+              ________
+ ETA                0
+ RNAME              0
+ SOCREF             0
+ QSHOW              0
+ GNUM               0
+ AGE                0
+
+
+           PSI
+              ETA           RNAME         SOCREF        QSHOW         GNUM
+              ________      ________      ________      ________      ________
+ ETA                2
+ RNAME              0             0
+ SOCREF             0             0             0
+ QSHOW              0             0             0             0
+ GNUM               0             0             0             0             0
+ AGE                0             0             0             0             0
+
+
+           PSI
+              AGE
+              ________
+ AGE                0
+
+
+     STARTING VALUES
+
+
+           TAU
+              EYEC$1        RNAME$1       RNAME$2       SOCINT$1      SOCINT$2
+              ________      ________      ________      ________      ________
+                0.878        -0.924         0.685         0.661         7.536
+
+
+           TAU
+              SOCREF$1      SOCREF$2      QSHOW$1       QSHOW$2       QQSO$1
+              ________      ________      ________      ________      ________
+               -0.608         0.803        -2.969         0.118        -0.284
+
+
+           TAU
+              QQSO$2        Q5$1          Q5$2          Q9$1          Q9$2
+              ________      ________      ________      ________      ________
+                3.934         0.243         1.599         0.049         3.545
+
+
+           NU
+              EYEC          RNAME         SOCINT        SOCREF        QSHOW
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              QQSO          Q5            Q9            GNUM          AGE
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              ETA           RNAME         SOCREF        QSHOW         GNUM
+              ________      ________      ________      ________      ________
+ EYEC           1.918         0.000         0.000         0.000         0.000
+ RNAME          0.000         1.000         0.000         0.000         0.000
+ SOCINT         4.653         0.000         0.000         0.000         0.000
+ SOCREF         0.000         0.000         1.000         0.000         0.000
+ QSHOW          0.000         0.000         0.000         1.000         0.000
+ QQSO           2.990         0.000         0.000         0.000         0.000
+ Q5             1.047         0.000         0.000         0.000         0.000
+ Q9             3.313         0.000         0.000         0.000         0.000
+ GNUM           0.000         0.000         0.000         0.000         1.000
+ AGE            0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              AGE
+              ________
+ EYEC           0.000
+ RNAME          0.000
+ SOCINT         0.000
+ SOCREF         0.000
+ QSHOW          0.000
+ QQSO           0.000
+ Q5             0.000
+ Q9             0.000
+ GNUM           0.000
+ AGE            1.000
+
+
+           THETA
+              EYEC          RNAME         SOCINT        SOCREF        QSHOW
+              ________      ________      ________      ________      ________
+ EYEC           1.000
+ RNAME          0.000         0.000
+ SOCINT         0.000         0.000         1.000
+ SOCREF         0.000         0.000         0.000         0.000
+ QSHOW          0.000         0.000         0.000         0.000         0.000
+ QQSO           0.000         0.000         0.000         0.000         0.000
+ Q5             0.000         0.000         0.000         0.000         0.000
+ Q9             0.000         0.000         0.000         0.000         0.000
+ GNUM           0.000         0.000         0.000         0.000         0.000
+ AGE            0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              QQSO          Q5            Q9            GNUM          AGE
+              ________      ________      ________      ________      ________
+ QQSO           1.000
+ Q5             0.000         1.000
+ Q9             0.000         0.000         1.000
+ GNUM           0.000         0.000         0.000         0.000
+ AGE            0.000         0.000         0.000         0.000         0.000
+
+
+           ALPHA
+              ETA           RNAME         SOCREF        QSHOW         GNUM
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           ALPHA
+              AGE
+              ________
+                0.000
+
+
+           BETA
+              ETA           RNAME         SOCREF        QSHOW         GNUM
+              ________      ________      ________      ________      ________
+ ETA            0.000         0.000         0.000         0.000        -0.253
+ RNAME          0.705         0.000         0.000         0.000         0.000
+ SOCREF         1.000         0.000         0.000         0.000        -0.280
+ QSHOW          1.876         0.000         0.000         0.000         0.000
+ GNUM           0.000         0.000         0.000         0.000         0.000
+ AGE            0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              AGE
+              ________
+ ETA           -0.014
+ RNAME         -0.053
+ SOCREF        -0.034
+ QSHOW         -0.076
+ GNUM           0.000
+ AGE            0.000
+
+
+           PSI
+              ETA           RNAME         SOCREF        QSHOW         GNUM
+              ________      ________      ________      ________      ________
+ ETA            0.050
+ RNAME          0.000         1.000
+ SOCREF         0.000         0.000         1.000
+ QSHOW          0.000         0.000         0.000         1.000
+ GNUM           0.000         0.000         0.000         0.000         0.122
+ AGE            0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              AGE
+              ________
+ AGE           61.432
+
+
+SAMPLE STATISTICS FOR ESTIMATED FACTOR SCORES
+
+
+     SAMPLE STATISTICS
+
+
+           Means
+              ETA           ETA_SE
+              ________      ________
+               -0.373         0.480
+
+
+           Covariances
+              ETA           ETA_SE
+              ________      ________
+ ETA            0.747
+ ETA_SE        -0.101         0.019
+
+
+           Correlations
+              ETA           ETA_SE
+              ________      ________
+ ETA            1.000
+ ETA_SE        -0.840         1.000
+
+
+SAVEDATA INFORMATION
+
+
+  Save file
+    scores.dat
+
+  Order and format of variables
+
+    EYEC           F10.3
+    RNAME          F10.3
+    SOCINT         F10.3
+    SOCREF         F10.3
+    QSHOW          F10.3
+    QQSO           F10.3
+    Q5             F10.3
+    Q9             F10.3
+    GNUM           F10.3
+    AGE            F10.3
+    ETA            F10.3
+    ETA_SE         F10.3
+    ID             I4
+
+  Save file format
+    12F10.3 I4
+
+  Save file record length    10000
+
+  Save missing symbol        *
+
+
+     Beginning Time:  22:04:08
+        Ending Time:  22:05:21
+       Elapsed Time:  00:01:13
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen
