@@ -8,6 +8,7 @@ library(lcmm)
 library(gtsummary)
 library(flextable)
 
+################# All below code written by Kevin Donovan and Joshua Rutsohn ####################
 ############
 #RRB Scores
 ############

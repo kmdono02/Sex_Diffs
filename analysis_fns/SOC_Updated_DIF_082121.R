@@ -3,6 +3,8 @@ library(dplyr)
 library(aMNLFA)
 library(MplusAutomation)
 
+################# All below code written by Joshua Rutsohn and Isa Stallworthy (some edits by KD) ####################
+
 setwd('../mnlfa_results/soc_files')
 homedir <- getwd()
 #source("fixPath.R")
