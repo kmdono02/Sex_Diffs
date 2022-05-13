@@ -1,7 +1,6 @@
 # Sex Differences in Familal Likelihood ASD Symptoms
 
-All code, results, and de-identified data for "A data driven approach in an unbiased sample reveals equivalent sex ratio of autism spectrum disorder associated impairment in early childhood![image](https://user-images.githubusercontent.com/43554362/168335513-ea1b1b88-c081-4d3c-b6b8-976f307d3b13.png)
-" by Burrows et al. (2022)
+All code, results, and de-identified data for "A data driven approach in an unbiased sample reveals equivalent sex ratio of autism spectrum disorder associated impairment in early childhood" by Burrows et al. (2022)
 
 # Contents
 
