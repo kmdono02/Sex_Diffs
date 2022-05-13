@@ -1,5 +1,0 @@
-TITLE: Your title goes here
-DATA: FILE = "C:/Users/kdono/OneDrive/Documents/mnlfa_mplus_dir/full.dat";
-VARIABLE: 
-NAMES = ID EYEC RNAME SOCINT SOCREF QSHOW QQSO Q5 Q9 GNUM AGE; 
-MISSING=.;

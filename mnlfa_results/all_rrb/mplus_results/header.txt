@@ -1,5 +1,0 @@
-TITLE: Your title goes here
-DATA: FILE = "C:/Users/kdono/OneDrive/Documents/mnlfa_mplus_dir/calibration.dat";
-VARIABLE: 
-NAMES = ID MOTOR SENS QREPB Q19 Q16 GNUM AGE; 
-MISSING=.;
