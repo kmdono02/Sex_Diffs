@@ -122,3 +122,19 @@ aMNLFA.scores(ob)
 # Need to move this file to wdir before running this last line. 
 #source(paste(homedir,'aMNLFA_scoreplots.R', sep = '/'))
 aMNLFA.scoreplots(ob)
+
+# Work with scores.dat file (need to add in column names: order per MNLFA obj)
+# Create formatted CSVs to analyze further
+scores <- read.table("scores.dat",
+                       header=FALSE, na.strings = "*")
+names(scores) <- c("EYEC", "RNAME", "SOCINT", "SOCREF", "QSHOW", "QQSO", "Q5", "Q9", 
+                   "GNUM", "AGE", "ETA", "ETA_SE", "ID")
+
+scores_edit <- scores %>% select(ID, everything())
+write_csv(x=scores_edit, file="soc_data_w_scores.csv")
+
+# Need to add in DX
+scores_merge <- left_join(scores_edit, x_var_data_soc %>% 
+                            select(ID, AGE, DXGENCHA, DXV24, DX_GNUM)) %>%
+  mutate(DXGENCHA=gsub("negative", "nonASD", DXGENCHA))
+write_csv(x=scores_merge, file="factor_scores_wdx.csv")
