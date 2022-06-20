@@ -279,7 +279,7 @@ rrb_mnlfa_fit <- left_join(rrb_round3, lambda_dif, by="param") %>%
 rrb_mnlfa_table <-
   flextable(rrb_mnlfa_fit %>% 
               select(param_type, param_name.x, est, se, pval) %>%
-              mutate(est=ifelse(est==999, NA, est),
+              mutate(est=ifelse(est==999, 1, est),
                      se=ifelse(se==0, NA, se),
                      pval=ifelse(pval==999, NA, pval)) %>%
               filter(param_type!="Threshold")) %>%
@@ -328,7 +328,7 @@ soc_mnlfa_fit <- left_join(soc_round3, lambda_dif, by="param") %>%
 soc_mnlfa_table <-
   flextable(soc_mnlfa_fit %>% 
               select(param_type, param_name.x, est, se, pval) %>%
-              mutate(est=ifelse(est==999, NA, est),
+              mutate(est=ifelse(est==999, 1, est),
                      se=ifelse(se==0, NA, se),
                      pval=ifelse(pval==999, NA, pval)) %>%
               filter(param_type!="Threshold")) %>%
